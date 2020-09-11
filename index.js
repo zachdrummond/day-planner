@@ -28,17 +28,17 @@ $(document).ready(function () {
     var storedTimes = JSON.parse(localStorage.getItem("Time"));
     var storedNotes = JSON.parse(localStorage.getItem("Text"));
 
-    if ((storedTimes !== null) & (storedNotes !== null)) {
+    if ((storedTimes !== null) && (storedNotes !== null)) {
       timeOfNotesArray = storedTimes;
       userNotesArray = storedNotes;
-
+    
       textArea.text(userNotesArray[i]);
     }
   }
 
 //   Adds Colors to the Schedule to reflect Present, Past, and Future Hours
   function colorSchedule() {
-    var currentTime = 13; //moment.hour();
+    var currentTime = moment().hour();
 
     if (hoursArray[i] === currentTime) {
       textArea.addClass("present");
