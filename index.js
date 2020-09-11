@@ -29,7 +29,7 @@
 
 $(document).ready(function () {
   // Variables
-  var hoursArray = [9, 10, 11, 12, 1, 2, 3, 4, 5];
+  var hoursArray = [9, 10, 11, 12, 13, 14, 15, 16, 17];
   var timeArray = [];
   var notesArray = [];
 
@@ -49,37 +49,15 @@ $(document).ready(function () {
     // Column 1 - Time
     var timeDisplay = $("<div>");
     timeDisplay.addClass("col-sm-2 hour");
-    timeDisplay.text(hoursArray[i]);
+    displayTime();
     rowDiv.append(timeDisplay);
     // Column 2 - Text
     var textArea = $("<textarea>");
     textArea.addClass("col-sm-9 description");
-
-    var storedTime = JSON.parse(localStorage.getItem("Time"));
-    var storedNotes = JSON.parse(localStorage.getItem("Text"));
-
-    if ((storedTime !== null) & (storedNotes !== null)) {
-      timeArray = storedTime;
-      notesArray = storedNotes;
-
-      textArea.text(notesArray[i]);
-    }
+    getNotes();
     rowDiv.append(textArea);
 
-    var militaryTime = 0;
-    if (hoursArray.indexOf(hoursArray[i]) > 3) {
-      militaryTime = hoursArray[i] + 12;
-    } else {
-      militaryTime = hoursArray[i];
-    }
-
-    if (militaryTime === getCurrentTime()) {
-      textArea.addClass("present");
-    } else if (militaryTime < getCurrentTime()) {
-      textArea.addClass("past");
-    } else {
-      textArea.addClass("future");
-    }
+    colorSchedule();
 
     // Column 3 - Save Button
     var saveButton = $("<button>");
@@ -95,9 +73,38 @@ $(document).ready(function () {
     });
   }
 
-  function getCurrentTime() {
+  function displayTime() {
+    if (hoursArray[i] < 12) {
+      timeDisplay.text(hoursArray[i] + "AM");
+    } else if (hoursArray[i] > 12) {
+      timeDisplay.text(hoursArray[i] - 12 + "PM");
+    } else {
+      timeDisplay.text(hoursArray[i] + "PM");
+    }
+  }
+
+  function getNotes() {
+    var storedTime = JSON.parse(localStorage.getItem("Time"));
+    var storedNotes = JSON.parse(localStorage.getItem("Text"));
+
+    if ((storedTime !== null) & (storedNotes !== null)) {
+      timeArray = storedTime;
+      notesArray = storedNotes;
+
+      textArea.text(notesArray[i]);
+    }
+  }
+
+  function colorSchedule() {
     var currentTime = moment().hour();
-    return currentTime;
+
+    if (hoursArray[i] === currentTime) {
+      textArea.addClass("present");
+    } else if (hoursArray[i] < currentTime) {
+      textArea.addClass("past");
+    } else {
+      textArea.addClass("future");
+    }
   }
 
   // Call Functions
