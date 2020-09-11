@@ -20,6 +20,7 @@ Your notes will be saved, even if you exit out of the app.
 * Clean User Interface
 * Dynamically Updated HTML and CSS powered by jQuery
 * Moment.js API
+* Google Fonts API
 * JSON
 * Logical Code Structure
 * Sequential Order
@@ -82,5 +83,7 @@ Your notes will be saved, even if you exit out of the app.
 ## Credits
 * jquery - https://api.jquery.com/
 * Moment.js - https://momentjs.com/
+* Font Awesome - https://fontawesome.com/
+* Google Fonts - https://fonts.google.com/
 * Bootstrap: https://getbootstrap.com/
 * Classmate, Andrew Siegel, helped by talking through the logic of displaying, storing, and coloring the correct time.
