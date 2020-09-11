@@ -20,6 +20,7 @@
 // CSS Class - future
 // 6. Add an input to the hour blocks - User can enter an event
 // Input Form with Text
+
 // 7. Add a save button to each hour block - Save text to local storage
 // Submit Button - Font Awesome lock look for class
 // setItem & getItem
@@ -28,18 +29,9 @@
 
 $(document).ready(function () {
   // Variables
-  var currentDay;
-  var hoursArray = [
-    "9:00 AM",
-    "10:00 AM",
-    "11:00 AM",
-    "12:00 PM",
-    "1:00 PM",
-    "2:00 PM",
-    "3:00 PM",
-    "4:00 PM",
-    "5:00 PM",
-  ];
+  var hoursArray = [9, 10, 11, 12, 1, 2, 3, 4, 5];
+  var timeArray = [];
+  var notesArray = [];
 
   // Element Variables
   var currentDayDisplay = $("#currentDayDisplay");
@@ -49,31 +41,67 @@ $(document).ready(function () {
 
   // Functions
 
-  function displayCalendar() {
-    for (var i = 0; i < hoursArray.length; i++) {
-      // Row
-      var rowDiv = $("<div>");
-      rowDiv.addClass("row time-block");
-      containerDiv.append(rowDiv);
-      // Column 1 - Time
-      var colDiv1 = $("<div>");
-      colDiv1.addClass("col-sm-2 hour");
-      colDiv1.text(hoursArray[i]);
-      rowDiv.append(colDiv1);
-      // Column 2 - Text
-      var textArea = $("<textarea>");
-      textArea.addClass("col-sm-9 description");
-      textArea.text("Hello World");
-      rowDiv.append(textArea);
-      // Column 3 - Save Button
-      var saveButton = $("<button>");
-      saveButton.addClass("col-sm-1 fas fa-save saveBtn i:hover");
-      rowDiv.append(saveButton);
+  for (var i = 0; i < hoursArray.length; i++) {
+    // Row
+    var rowDiv = $("<div>");
+    rowDiv.addClass("row time-block");
+    containerDiv.append(rowDiv);
+    // Column 1 - Time
+    var timeDisplay = $("<div>");
+    timeDisplay.addClass("col-sm-2 hour");
+    timeDisplay.text(hoursArray[i]);
+    rowDiv.append(timeDisplay);
+    // Column 2 - Text
+    var textArea = $("<textarea>");
+    textArea.addClass("col-sm-9 description");
+
+    var storedTime = JSON.parse(localStorage.getItem("Time"));
+    var storedNotes = JSON.parse(localStorage.getItem("Text"));
+
+    if ((storedTime !== null) & (storedNotes !== null)) {
+      timeArray = storedTime;
+      notesArray = storedNotes;
+
+      textArea.text(notesArray[i]);
     }
+    rowDiv.append(textArea);
+
+    var militaryTime = 0;
+    if (hoursArray.indexOf(hoursArray[i]) > 3) {
+      militaryTime = hoursArray[i] + 12;
+    } else {
+      militaryTime = hoursArray[i];
+    }
+
+    if (militaryTime === getCurrentTime()) {
+      textArea.addClass("present");
+    } else if (militaryTime < getCurrentTime()) {
+      textArea.addClass("past");
+    } else {
+      textArea.addClass("future");
+    }
+
+    // Column 3 - Save Button
+    var saveButton = $("<button>");
+    saveButton.addClass("col-sm-1 fas fa-save saveBtn i:hover");
+    rowDiv.append(saveButton);
+
+    saveButton.on("click", function () {
+      timeArray.push($(this).siblings("div").text());
+      notesArray.push($(this).siblings("textArea").val());
+
+      localStorage.setItem("Time", JSON.stringify(timeArray));
+      localStorage.setItem("Text", JSON.stringify(notesArray));
+    });
+  }
+
+  function getCurrentTime() {
+    var currentTime = moment().hour();
+    return currentTime;
   }
 
   // Call Functions
-  displayCalendar();
+  //   displayCalendar();
 
   // Event Listeners
 });
