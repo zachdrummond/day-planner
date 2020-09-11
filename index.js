@@ -32,7 +32,11 @@ $(document).ready(function () {
       timeOfNotesArray = storedTimes;
       userNotesArray = storedNotes;
     
-      textArea.text(userNotesArray[i]);
+      for(var i = 0; i < userNotesArray.length; i++){
+        if(timeDisplay.text() === timeOfNotesArray[i]){
+            textArea.text(userNotesArray[i]);
+          }
+      }
     }
   }
 
@@ -81,6 +85,7 @@ $(document).ready(function () {
     // Column 2 - Text
     var textArea = $("<textarea>");
     textArea.addClass("col-sm-9 description");
+    //textArea.attr("id", hoursArray[i]);
     getNotes();
     rowDiv.append(textArea);
 
