@@ -40,39 +40,6 @@ $(document).ready(function () {
   var containerDiv = $(".container");
 
   // Functions
-
-  for (var i = 0; i < hoursArray.length; i++) {
-    // Row
-    var rowDiv = $("<div>");
-    rowDiv.addClass("row time-block");
-    containerDiv.append(rowDiv);
-    // Column 1 - Time
-    var timeDisplay = $("<div>");
-    timeDisplay.addClass("col-sm-2 hour");
-    displayTime();
-    rowDiv.append(timeDisplay);
-    // Column 2 - Text
-    var textArea = $("<textarea>");
-    textArea.addClass("col-sm-9 description");
-    getNotes();
-    rowDiv.append(textArea);
-
-    colorSchedule();
-
-    // Column 3 - Save Button
-    var saveButton = $("<button>");
-    saveButton.addClass("col-sm-1 fas fa-save saveBtn i:hover");
-    rowDiv.append(saveButton);
-
-    saveButton.on("click", function () {
-      timeArray.push($(this).siblings("div").text());
-      notesArray.push($(this).siblings("textArea").val());
-
-      localStorage.setItem("Time", JSON.stringify(timeArray));
-      localStorage.setItem("Text", JSON.stringify(notesArray));
-    });
-  }
-
   function displayTime() {
     if (hoursArray[i] < 12) {
       timeDisplay.text(hoursArray[i] + "AM");
@@ -107,8 +74,40 @@ $(document).ready(function () {
     }
   }
 
-  // Call Functions
-  //   displayCalendar();
+  function addSaveButton() {
+    saveButton.on("click", function () {
+      timeArray.push($(this).siblings("div").text());
+      notesArray.push($(this).siblings("textArea").val());
 
-  // Event Listeners
+      localStorage.setItem("Time", JSON.stringify(timeArray));
+      localStorage.setItem("Text", JSON.stringify(notesArray));
+    });
+  }
+
+  // Call Functions
+  for (var i = 0; i < hoursArray.length; i++) {
+    // Row
+    var rowDiv = $("<div>");
+    rowDiv.addClass("row time-block");
+    containerDiv.append(rowDiv);
+    // Column 1 - Time
+    var timeDisplay = $("<div>");
+    timeDisplay.addClass("col-sm-2 hour");
+    displayTime();
+    rowDiv.append(timeDisplay);
+    // Column 2 - Text
+    var textArea = $("<textarea>");
+    textArea.addClass("col-sm-9 description");
+    getNotes();
+    rowDiv.append(textArea);
+
+    colorSchedule();
+
+    // Column 3 - Save Button
+    var saveButton = $("<button>");
+    saveButton.addClass("col-sm-1 fas fa-save saveBtn i:hover");
+    rowDiv.append(saveButton);
+    addSaveButton();
+  }
+
 });
