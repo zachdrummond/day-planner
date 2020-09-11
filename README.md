@@ -8,7 +8,7 @@
 * [Credits](#Credits)
 
 ## Description
-This is an app that creates a personal daily calendar which allows the user to schedule events for each hour of the day. These days, everyone has a busy schedule. Now you can manage your time more effectively with your very own personal daily planner!
+This is an app that creates a personal daily calendar or scheduler which allows the user to schedule events for each hour of the day. These days, everyone has a busy schedule. Now you can manage your time more effectively with your very own personal daily planner!
 
 ### *Usage*
 1. Click a time-block text area to add an events or notes.
@@ -69,11 +69,11 @@ Your notes will be saved, even if you exit out of the app.
 ### *Day Planner*
 ![Screenshot](images/dayPlanner1.png)
 
-### *Day Planner*
-![Screenshot](images/dayPlanner1.png)
+### *Notes*
+![Screenshot](images/dayPlanner2.png)
 
-### *Day Planner*
-![Screenshot](images/dayPlanner1.png)
+### *Local Storage*
+![Screenshot](images/dayPlanner3.png)
 
 ## Links
 * Website: https://zachdrummond.github.io/day-planner/

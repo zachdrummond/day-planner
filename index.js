@@ -85,7 +85,6 @@ $(document).ready(function () {
     // Column 2 - Text
     var textArea = $("<textarea>");
     textArea.addClass("col-sm-9 description");
-    //textArea.attr("id", hoursArray[i]);
     getNotes();
     rowDiv.append(textArea);
 
