@@ -4,15 +4,17 @@ body {
   line-height: 1;
 }
 
+/* Styles the TextArea Element */
 textarea{
   background: transparent;
   border: none;
   resize: none;
-  color: #000000;
+  color: #000000!important;
   border-left: 1px solid black;
   padding: 10px;
 }
 
+/* Styles the App Header */
 .jumbotron {
   text-align: center;
   background-color: transparent;
@@ -21,14 +23,11 @@ textarea{
   border-bottom: 10px solid black;
 }
 
-.test{
-  border: solid;
-}
-
 .description{
   white-space: pre-wrap;
 }
 
+/* Styles the Div Container's Row */
 .time-block{
   text-align: center;
   border-radius: 15px;
@@ -40,12 +39,14 @@ textarea{
   border-top: 1px solid white;;
 }
 
+/* Styles Column 1 - Time Display */
 .hour {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
 }
 
+/* Styles the Text Area based on the Current Time */
 .past {
   background-color: #d3d3d3;
   color: white;
@@ -61,6 +62,7 @@ textarea{
   color: white;
 }
 
+/* Styles the Save Button */
 .saveBtn {
   border-left: 1px solid black;
   border-top-right-radius: 15px;

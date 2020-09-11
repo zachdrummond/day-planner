@@ -36,9 +36,9 @@ $(document).ready(function () {
     }
   }
 
-  // Adds Colors to the Schedule to reflect Present, Past, and Future Hours
+//   Adds Colors to the Schedule to reflect Present, Past, and Future Hours
   function colorSchedule() {
-    var currentTime = moment().hour();
+    var currentTime = 13; //moment.hour();
 
     if (hoursArray[i] === currentTime) {
       textArea.addClass("present");
