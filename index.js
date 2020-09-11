@@ -2,8 +2,8 @@ $(document).ready(function () {
 
   // Variables
   var hoursArray = [9, 10, 11, 12, 13, 14, 15, 16, 17];
-  var timeArray = [];
-  var notesArray = [];
+  var timeOfNotesArray = [];
+  var userNotesArray = [];
 
   // Element Variables
   var currentDayDisplay = $("#currentDayDisplay");
@@ -25,14 +25,14 @@ $(document).ready(function () {
 
   // Displays the User's Notes from Local Storage
   function getNotes() {
-    var storedTime = JSON.parse(localStorage.getItem("Time"));
+    var storedTimes = JSON.parse(localStorage.getItem("Time"));
     var storedNotes = JSON.parse(localStorage.getItem("Text"));
 
-    if ((storedTime !== null) & (storedNotes !== null)) {
-      timeArray = storedTime;
-      notesArray = storedNotes;
+    if ((storedTimes !== null) & (storedNotes !== null)) {
+      timeOfNotesArray = storedTimes;
+      userNotesArray = storedNotes;
 
-      textArea.text(notesArray[i]);
+      textArea.text(userNotesArray[i]);
     }
   }
 
@@ -52,11 +52,16 @@ $(document).ready(function () {
   // Adds the Save Button that saves the User's Notes to Local Storage
   function addSaveButton() {
     saveButton.on("click", function () {
-      timeArray.push($(this).siblings("div").text());
-      notesArray.push($(this).siblings("textArea").val());
+      var timeOfNote = $(this).siblings("div").text();
+      var userNote = $(this).siblings("textArea").val();
 
-      localStorage.setItem("Time", JSON.stringify(timeArray));
-      localStorage.setItem("Text", JSON.stringify(notesArray));
+      if(userNote !== ""){
+        timeOfNotesArray.push(timeOfNote);
+        userNotesArray.push(userNote);
+  
+        localStorage.setItem("Time", JSON.stringify(timeOfNotesArray));
+        localStorage.setItem("Text", JSON.stringify(userNotesArray));
+      }
     });
   }
 
