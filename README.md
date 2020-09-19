@@ -2,13 +2,17 @@
 
 ## Table of Contents
 * [Description](#Description)
+* [Links](#Links)
 * [Design Elements](#Design-Elements)
 * [App Preview](#App-Preview)
-* [Links](#Links)
 * [Credits](#Credits)
 
 ## Description
 This is an app that creates a personal daily calendar or scheduler which allows the user to schedule events for each hour of the day. These days, everyone has a busy schedule. Now you can manage your time more effectively with your very own personal daily planner!
+
+## Links
+* Website: https://zachdrummond.github.io/day-planner/
+* GitHub Repository: https://github.com/zachdrummond/day-planner
 
 ### *Usage*
 1. Click a time-block text area to add an events or notes.
@@ -75,10 +79,6 @@ Your notes will be saved, even if you exit out of the app.
 
 ### *Local Storage*
 ![Screenshot](images/dayPlanner3.png)
-
-## Links
-* Website: https://zachdrummond.github.io/day-planner/
-* GitHub Repository: https://github.com/zachdrummond/day-planner
 
 ## Credits
 * jquery - https://api.jquery.com/
