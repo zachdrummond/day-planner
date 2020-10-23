@@ -20,55 +20,13 @@ This is an app that creates a personal daily calendar or scheduler which allows 
 Your notes will be saved, even if you exit out of the app.
 
 ## Design Elements
-### *JavaScript*
-* Clean User Interface
-* Dynamically Updated HTML and CSS powered by jQuery
+* JavaScript
+* jQuery
 * Moment.js API
-* Google Fonts API
-* JSON
-* Logical Code Structure
-* Sequential Order
-* Web Application Programming Interface
-* Document Object Model Manipulation
 * Local Storage
-* Objects
-* Arrays
-* Methods
-* Global and Local Variables
-* Functions
-* Event Listeners
-* Interval
-* if...else Statements
-* for Loops
-* Comments
-
-### *Bootstrap*
-* Grid System
-* Jumbotron
-* Spacing
-
-### *HTML*
-* Logical Structure
-* Sequential Order
-* Bootstrap CSS Link
-* CSS File Link
-* JavaScript File Link
-* Concise Descriptive Title
-* Semantic Elements
-* ids, Classes, and Elements
-* Buttons
-* Accessible Attributes
-* Comments
-
-### *CSS*
-* Background
-* Height
-* Border
-* Padding & Margin
-* Font
-* Alignment
-* Colors
-* Comments
+* HTML
+* CSS
+* Bootstrap
 
 ## App Preview
 ### *Day Planner*
